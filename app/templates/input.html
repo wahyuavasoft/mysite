@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}  
+
+
+
+        <div class="container">
+            <br><br><br><br><br><br><br><br><br><br><br>
+
+
+    <select id="test"></select>
+            <script type="text/javascript">
+window.onload=function(){
+
+var select = document.getElementById( 'test' );
+{% for p in isi %}
+   var  option = document.createElement( 'option' );
+    option.value ={{p.id}};
+    option.text = '{{p.Nama}}';
+    select.add( option,0 );
+
+{% endfor %}
+};
+</script>
+        
+        </div>
+  
+  {% endblock %}
