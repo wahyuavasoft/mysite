@@ -1355,13 +1355,13 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
     padding-right: 0px;
     width: 17px;
     height: 17px;
-    background-image: url(static/combotabel/right.png);
+    background-image: url(images/icon-right.png);
     background-position: 100% 50%;
     background-repeat: no-repeat;
     cursor: pointer;
 }
 .jqx-tree-item-arrow-collapse-rtl, .jqx-tree-item-arrow-collapse-hover-rtl {
-    background-image: url(static/combotabel/left.png);
+    background-image: url(images/icon-left.png);
 }
 
 /*applied to a tree item when it has sub items and is expanded. Displays an arrow icon next to the item.*/
@@ -1370,7 +1370,7 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
     padding-right: 0px;
     width: 17px;
     height: 17px;
-    background-image: url(static/combotabel/down.png);
+    background-image: url(images/icon-down.png);
     background-position: 100% 50%;
     background-repeat: no-repeat;
     cursor: pointer;
@@ -1457,7 +1457,7 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
     outline: none;
     position: relative;
     z-index: 15;
-    background-image: url('static/combotabel/right.png');
+    background-image: url('images/icon-right.png');
     background-repeat: no-repeat;
     background-position: center;
     float: left;
@@ -2989,7 +2989,7 @@ of the horizontal scrollbar.*/
 .jqx-right-arrow
 {
     background: transparent;
-    background-image: url('static/combotabel/right.png');
+    background-image: url('images/icon-right.png');
     cursor: pointer;
 }
 .jqx-icon-delete

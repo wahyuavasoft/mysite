@@ -1,10 +1,10 @@
-function generatedata22(rowscount, hasNullValues) {
+function generatedata(rowscount, hasNullValues) {
     // prepare the data
     var data = new Array();
     if (rowscount == undefined) rowscount = 100;
     var firstNames =
     [
-        "Andrew99", "Nancy", "Shelley", "Regina", "Yoshi", "Antoni", "Mayumi", "Ian", "Peter", "Lars", "Petra", "Martin", "Sven", "Elio", "Beate", "Cheryl", "Michael", "Guylene"
+        "Andrew8899", "Nancy", "Shelley", "Regina", "Yoshi", "Antoni", "Mayumi", "Ian", "Peter", "Lars", "Petra", "Martin", "Sven", "Elio", "Beate", "Cheryl", "Michael", "Guylene"
     ];
 
     var lastNames =
@@ -14,7 +14,7 @@ function generatedata22(rowscount, hasNullValues) {
 
     var productNames =
     [
-        "Black Tea656", "Green Tea", "Caffe Espresso", "Doubleshot Espresso", "Caffe Latte", "White Chocolate Mocha", "Caramel Latte", "Caffe Americano", "Cappuccino", "Espresso Truffle", "Espresso con Panna", "Peppermint Mocha Twist"
+        "Black Tea", "Green Tea", "Caffe Espresso", "Doubleshot Espresso", "Caffe Latte", "White Chocolate Mocha", "Caramel Latte", "Caffe Americano", "Cappuccino", "Espresso Truffle", "Espresso con Panna", "Peppermint Mocha Twist"
     ];
 
     var priceValues =
@@ -53,3 +53,4 @@ function generatedata22(rowscount, hasNullValues) {
     }
 
     return data;
+}
