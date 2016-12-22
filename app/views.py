@@ -109,7 +109,13 @@ def acounting():
         '{"no":"002","Nama":"gotoo", "Barang": "apel","Qty": "2","harga":"200"},' \
         '{"no":"003","Nama":"momoo", "Barang": "mangga","Qty": "3","harga":"300"},' \
         '{"no":"004","Nama":"mojoo", "Barang": "anggur","Qty": "4","harga":"400"},' \
-        '{"no":"005","Nama":"goroo", "Barang": "tomat","Qty": "5","harga":"500"}]}';
+        '{"no":"005","Nama":"gotoo", "Barang": "cerry","Qty": "5","harga":"500"},' \
+        '{"no":"006","Nama":"royoo", "Barang": "pisang","Qty": "6","harga":"600"},' \
+        '{"no":"007","Nama":"yoyoo", "Barang": "melon","Qty": "7","harga":"700"},' \
+        '{"no":"008","Nama":"yogoo", "Barang": "nanas","Qty": "8","harga":"800"},' \
+        '{"no":"009","Nama":"monoo", "Barang": "kiwi","Qty": "9","harga":"900"},' \
+        '{"no":"010","Nama":"moyoo", "Barang": "lemon","Qty": "10","harga":"1000"},' \
+        '{"no":"011","Nama":"goroo", "Barang": "tomat","Qty": "11","harga":"1100"}]}';
     ab = json.loads(data)
     faktur = ab['jual']
     n = len (faktur)
