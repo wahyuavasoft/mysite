@@ -810,7 +810,7 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
 .jqx-grid-group-collapse-rtl
 {
     padding-right: 0px;
-    background-image: url(images/icon-left.png);
+    background-image: url(img/icon-left.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
     cursor: pointer;
@@ -819,7 +819,7 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
 .jqx-grid-group-expand, .jqx-grid-group-expand-rtl
 {
     padding-right: 0px;
-    background-image: url(images/icon-down.png);
+    background-image: url(img/icon-down.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
     cursor: pointer;
@@ -1042,12 +1042,12 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
 /*applied to a sub menu item when it has sub menu items. Displays down arrow icon.*/
 .jqx-menu-item-arrow-down
 {
-    background-image: url(images/icon-down.png);
+    background-image: url(img/icon-down.png);
 }
 /*applied to a sub menu item when it has sub menu items. Displays up arrow icon.*/
 .jqx-menu-item-arrow-up
 {
-    background-image: url(images/icon-up.png);
+    background-image: url(img/icon-up.png);
 }
 .jqx-menu-minimized {
     position: relative;
@@ -1104,7 +1104,7 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
     padding-left: 5px;
     width: 17px;
     height: 15px;
-    background-image: url(images/icon-left.png);
+    background-image: url(img/icon-left.png);
     background-position: 0 50%;
     background-repeat: no-repeat;
 }
@@ -1116,12 +1116,12 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
 /*applied to a sub menu item when it has sub menu items and its sub menu is opened. Displays down arrow icon.*/
 .jqx-menu-item-arrow-down-selected
 {
-    background-image: url(images/icon-down.png);
+    background-image: url(img/icon-down.png);
 }
 /*applied to a sub menu item when it has sub menu items and its sub menu is opened. Displays up arrow icon.*/
 .jqx-menu-item-arrow-up-selected
 {
-    background-image: url(images/icon-up.png);
+    background-image: url(img/icon-up.png);
 }
 .jqx-menu-item-arrow-right-selected, .jqx-menu-item-arrow-up-selected, .jqx-menu-item-arrow-down-selected, .jqx-menu-item-arrow-top-right {
     padding-right: 0px;
@@ -1139,12 +1139,12 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
 /*applied to a sub menu item when it has sub menu items and its sub menu is opened. Displays left arrow icon.*/
 .jqx-menu-item-arrow-left-selected
 {
-    background-image: url(images/icon-left.png);
+    background-image: url(img/icon-left.png);
 }
 /*applied to a top-level menu item when it has sub menu items. Displays left arrow icon.*/
 .jqx-menu-item-arrow-top-left
 {
-    background-image: url(images/icon-left.png);
+    background-image: url(img/icon-left.png);
 }
 .jqx-menu-item-arrow-left-selected, .jqx-menu-item-arrow-top-left {
     background-position: 0 50%;
@@ -1361,7 +1361,7 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
     cursor: pointer;
 }
 .jqx-tree-item-arrow-collapse-rtl, .jqx-tree-item-arrow-collapse-hover-rtl {
-    background-image: url(images/icon-left.png);
+    background-image: url(img/icon-left.png);
 }
 
 /*applied to a tree item when it has sub items and is expanded. Displays an arrow icon next to the item.*/
@@ -1370,7 +1370,7 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
     padding-right: 0px;
     width: 17px;
     height: 17px;
-    background-image: url(images/icon-down.png);
+    background-image: url(img/icon-down.png);
     background-position: 100% 50%;
     background-repeat: no-repeat;
     cursor: pointer;
@@ -1447,7 +1447,7 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
     cursor: pointer;
     margin: 0 0 0 0;
     padding: 0 0 0 0;
-    background-image: url('images/icon-left.png');
+    background-image: url('img/icon-left.png');
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -2682,7 +2682,7 @@ of the horizontal scrollbar.*/
 /*applied to the window's collapse button*/
 .jqx-window-collapse-button
 {
-    background-image: url(images/icon-up.png);
+    background-image: url(img/icon-up.png);
     cursor: pointer;
     margin-top: 1px;
 }
@@ -2691,7 +2691,7 @@ of the horizontal scrollbar.*/
 {
     margin-top: 0px;
     cursor: pointer;
-    background-image: url(images/icon-down.png);
+    background-image: url(img/icon-down.png);
 }
 /*setting styles of the modal window’s background*/
 .jqx-window-modal
@@ -2983,7 +2983,7 @@ of the horizontal scrollbar.*/
 .jqx-left-arrow
 {
     background: transparent;
-    background-image: url('images/icon-left.png');
+    background-image: url('img/icon-left.png');
     cursor: pointer;
 }
 .jqx-right-arrow
@@ -3018,20 +3018,20 @@ of the horizontal scrollbar.*/
 }
 .jqx-icon-arrow-up, .jqx-icon-arrow-up-hover, .jqx-icon-arrow-up-selected
 {
-    background-image: url('images/icon-up.png');
+    background-image: url('img/icon-up.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 .jqx-icon-arrow-down, .jqx-icon-arrow-down-hover, .jqx-icon-arrow-down-selected
 {
-    background-image: url('images/icon-down.png');
+    background-image: url('img/icon-down.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .jqx-icon-arrow-left, .jqx-icon-arrow-left-hover, .jqx-icon-arrow-left-selected
 {
-    background-image: url('images/icon-left.png');
+    background-image: url('img/icon-left.png');
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -3055,19 +3055,19 @@ of the horizontal scrollbar.*/
 }
 .jqx-icon-arrow-up-hover
 {
-    background-image: url('images/icon-up.png');
+    background-image: url('img/icon-up.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 .jqx-icon-arrow-down-hover
 {
-    background-image: url('images/icon-down.png');
+    background-image: url('img/icon-down.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 .jqx-icon-arrow-left-hover
 {
-    background-image: url('images/icon-left.png');
+    background-image: url('img/icon-left.png');
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -3080,19 +3080,19 @@ of the horizontal scrollbar.*/
 
 .jqx-icon-arrow-up-selected
 {
-    background-image: url('images/icon-up.png');
+    background-image: url('img/icon-up.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 .jqx-icon-arrow-down-selected
 {
-    background-image: url('images/icon-down.png');
+    background-image: url('img/icon-down.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 .jqx-icon-arrow-left-selected
 {
-    background-image: url('images/icon-left.png');
+    background-image: url('img/icon-left.png');
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -6631,22 +6631,22 @@ ol li .jqx-listmenu-item-label:before
 
 
 .jqx-primary .jqx-icon-arrow-down, .jqx-warning .jqx-icon-arrow-down, .jqx-danger .jqx-icon-arrow-down, .jqx-success .jqx-icon-arrow-down, .jqx-info .jqx-icon-arrow-down {
-  background-image: url('images/icon-down-white.png');
+  background-image: url('img/icon-down-white.png');
 }
 .jqx-primary .jqx-icon-arrow-down-selected, .jqx-warning .jqx-icon-arrow-down-selected, .jqx-danger .jqx-icon-arrow-down-selected, .jqx-success .jqx-icon-arrow-down-selected, .jqx-info .jqx-icon-arrow-down-selected {
-  background-image: url('images/icon-down-white.png');
+  background-image: url('img/icon-down-white.png');
 }
 .jqx-primary .jqx-icon-arrow-down-hover, .jqx-warning .jqx-icon-arrow-down-hover, .jqx-danger .jqx-icon-arrow-down-hover, .jqx-success .jqx-icon-arrow-down-hover, .jqx-info .jqx-icon-arrow-down-hover {
-  background-image: url('images/icon-down-white.png');
+  background-image: url('img/icon-down-white.png');
 }
 .jqx-primary .jqx-icon-arrow-up, .jqx-warning .jqx-icon-arrow-up, .jqx-danger .jqx-icon-arrow-up, .jqx-success .jqx-icon-arrow-up, .jqx-info .jqx-icon-arrow-up {
-  background-image: url('images/icon-up-white.png');
+  background-image: url('img/icon-up-white.png');
 }
 .jqx-primary .jqx-icon-arrow-up-selected, .jqx-warning .jqx-icon-arrow-up-selected, .jqx-danger .jqx-icon-arrow-up-selected, .jqx-success .jqx-icon-arrow-up-selected, .jqx-info .jqx-icon-arrow-up-selected {
-  background-image: url('images/icon-up-white.png');
+  background-image: url('img/icon-up-white.png');
 }
 .jqx-primary .jqx-icon-arrow-up-hover, .jqx-warning .jqx-icon-arrow-up-hover, .jqx-danger .jqx-icon-arrow-up-hover, .jqx-success .jqx-icon-arrow-up-hover, .jqx-info .jqx-icon-arrow-up-hover {
-  background-image: url('images/icon-up-white.png');
+  background-image: url('img/icon-up-white.png');
 }
 
 .jqx-primary .jqx-icon-arrow-right, .jqx-warning .jqx-icon-arrow-right, .jqx-danger .jqx-icon-arrow-right, .jqx-success .jqx-icon-arrow-right, .jqx-info .jqx-icon-arrow-right {
@@ -6659,13 +6659,13 @@ ol li .jqx-listmenu-item-label:before
   background-image: url('images/icon-right-white.png');
 }
 .jqx-primary .jqx-icon-arrow-left, .jqx-warning .jqx-icon-arrow-left, .jqx-danger .jqx-icon-arrow-left, .jqx-success .jqx-icon-arrow-left, .jqx-info .jqx-icon-arrow-left {
-  background-image: url('images/icon-left-white.png');
+  background-image: url('img/icon-left-white.png');
 }
 .jqx-primary .jqx-icon-arrow-left-selected, .jqx-warning .jqx-icon-arrow-left-selected, .jqx-danger .jqx-icon-arrow-left-selected, .jqx-success .jqx-icon-arrow-left-selected, .jqx-info .jqx-icon-arrow-left-selected {
-  background-image: url('images/icon-left-white.png');
+  background-image: url('img/icon-left-white.png');
 }
 .jqx-primary .jqx-icon-arrow-left-hover, .jqx-warning .jqx-icon-arrow-left-hover, .jqx-danger .jqx-icon-arrow-left-hover, .jqx-success .jqx-icon-arrow-left-hover, .jqx-info .jqx-icon-arrow-left-hover {
-  background-image: url('images/icon-left-white.png');
+  background-image: url('img/icon-left-white.png');
 }
 .jqx-primary-item .jqx-listitem-state-hover, .jqx-primary-item .jqx-menu-item-hover, .jqx-primary-item .jqx-tree-item-hover, .jqx-primary-item .jqx-calendar-cell-hover, .jqx-primary-item .jqx-grid-cell-hover,
 .jqx-primary-item .jqx-menu-vertical .jqx-menu-item-top-hover, .jqx-primary-item .jqx-input-popup .jqx-fill-state-hover,

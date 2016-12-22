@@ -1,6 +1,7 @@
 from flask import render_template, flash, redirect, url_for, request
 from app import app
 import json,urllib, sys
+import requests
 
 user = {'name': '</python>'}
 
@@ -14,17 +15,18 @@ def login():
             return redirect(url_for('index'))
     return render_template("index.html",error=error,user=user)
 
-@app.route('/home')
+@app.route('/home', methods=['GET', 'POST'])
 def index():
-    data = '{"jual":' \
-       '[{"no":"001","Nama":"toyoo", "Barang": "jeruk","Qty": "2","harga":"1500"},' \
-        '{"no":"002","Nama":"gotoo", "Barang": "apel","Qty": "1","harga":"15000"},' \
-        '{"no":"003","Nama":"momoo", "Barang": "mangga","Qty": "7","harga":"100"},' \
-        '{"no":"004","Nama":"mojoo", "Barang": "anggur","Qty": "9","harga":"2000"},' \
-        '{"no":"005","Nama":"goroo", "Barang": "tomat","Qty": "3","harga":"2500"}]}';
-    ab = json.loads(data)
-    faktur = ab['jual']
-    return render_template('home.html',title='project',user=user,faktur=faktur)
+    if request.method =='POST': 
+        url = "http://128.199.232.32/dbpost"
+        payload = {'COUNTRY':request.form['t'], 'CURRENCY':request.form['d']}
+        headers = {'content-type': 'application/json'}
+        response = requests.post(url, data=json.dumps(payload), headers=headers) 
+        return redirect(url_for('index'))
+    data = urllib.urlopen("http://128.199.232.32/db").read()
+    resp_dict = json.loads(data)
+    post=(resp_dict)
+    return render_template('home.html',title='project',user=user,post=post)
 
 @app.route('/input')
 def input():
