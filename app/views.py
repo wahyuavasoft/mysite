@@ -15,13 +15,19 @@ def login():
             return redirect(url_for('index'))
     return render_template("index.html",error=error,user=user)
 
-@app.route('/home', methods=['GET', 'POST'])
+@app.route('/home', methods=['GET', 'POST','DELETE'])
 def index():
     if request.method =='POST': 
         url = "http://128.199.232.32/dbpost"
         payload = {'COUNTRY':request.form['t'], 'CURRENCY':request.form['d']}
         headers = {'content-type': 'application/json'}
         response = requests.post(url, data=json.dumps(payload), headers=headers) 
+        return redirect(url_for('index'))
+    if request.method =='DELETE': 
+        url = "http://128.199.232.32/db/"+request.form['url']
+        payload = ""
+        headers = {'content-type': 'application/json'}
+        response = requests.request("DELETE", url, data=payload, headers=headers)
         return redirect(url_for('index'))
     data = urllib.urlopen("http://128.199.232.32/db").read()
     resp_dict = json.loads(data)
@@ -105,17 +111,17 @@ def utility():
 def acounting():
     n=0
     data = '{"jual":' \
-       '[{"no":"001","Nama":"toyoo", "Barang": "jeruk","Qty": "1","harga":"100"},' \
-        '{"no":"002","Nama":"gotoo", "Barang": "apel","Qty": "2","harga":"200"},' \
-        '{"no":"003","Nama":"momoo", "Barang": "mangga","Qty": "3","harga":"300"},' \
-        '{"no":"004","Nama":"mojoo", "Barang": "anggur","Qty": "4","harga":"400"},' \
-        '{"no":"005","Nama":"gotoo", "Barang": "cerry","Qty": "5","harga":"500"},' \
-        '{"no":"006","Nama":"royoo", "Barang": "pisang","Qty": "6","harga":"600"},' \
-        '{"no":"007","Nama":"yoyoo", "Barang": "melon","Qty": "7","harga":"700"},' \
-        '{"no":"008","Nama":"yogoo", "Barang": "nanas","Qty": "8","harga":"800"},' \
-        '{"no":"009","Nama":"monoo", "Barang": "kiwi","Qty": "9","harga":"900"},' \
-        '{"no":"010","Nama":"moyoo", "Barang": "lemon","Qty": "10","harga":"1000"},' \
-        '{"no":"011","Nama":"goroo", "Barang": "tomat","Qty": "11","harga":"1100"}]}';
+       '[{"no":"001","Nama":"toyoo", "Barang": "jeruk", "Qty": "1", "harga":"100"},' \
+        '{"no":"002","Nama":"gotoo", "Barang": "apel",  "Qty": "2", "harga":"200"},' \
+        '{"no":"003","Nama":"momoo", "Barang": "mangga","Qty": "3", "harga":"300"},' \
+        '{"no":"004","Nama":"mojoo", "Barang": "anggur","Qty": "4", "harga":"400"},' \
+        '{"no":"005","Nama":"gotoo", "Barang": "cerry", "Qty": "5", "harga":"500"},' \
+        '{"no":"006","Nama":"royoo", "Barang": "pisang","Qty": "6", "harga":"600"},' \
+        '{"no":"007","Nama":"yoyoo", "Barang": "melon", "Qty": "7", "harga":"700"},' \
+        '{"no":"008","Nama":"yogoo", "Barang": "nanas", "Qty": "8", "harga":"800"},' \
+        '{"no":"009","Nama":"monoo", "Barang": "kiwi",  "Qty": "9", "harga":"900"},' \
+        '{"no":"010","Nama":"moyoo", "Barang": "lemon", "Qty": "10","harga":"1000"},' \
+        '{"no":"011","Nama":"goroo", "Barang": "tomat", "Qty": "11","harga":"1100"}]}';
     ab = json.loads(data)
     faktur = ab['jual']
     n = len (faktur)
