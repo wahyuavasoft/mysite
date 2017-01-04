@@ -7,30 +7,73 @@
     <section id="portfolio">
     <div class="container">
 
-	    <div class="col-sm-3" style="color:#222;font-family: Helvetica, Arial, sans-serif;font-size: 10px">
-		<br> <br><br> <br>
-	            <form method="POST" name="klik" >
-	             	<div class="input-group">
-	                 	<span class="input-group-addon"><i class="glyphicon glyphicon-plus"></i></span>
-	                	<input id="t" type="text" class="form-control" name="t" placeholder="country" style="color:#222;font-family: Helvetica, Arial, sans-serif;" required>
-	            	</div>
-	            <br>
-	            	<div class="input-group">
-	                 	<span class="input-group-addon"><i class="glyphicon glyphicon-plus"></i></span>
-	                	<input id="d" type="text" class="form-control" name="d" placeholder="currency" style="color:#222;font-family: Helvetica, Arial, sans-serif;" required>
-	            	</div>
-	            <br>	<input type="button" class="btn btn-default" value="Simpan" style="color:#222;font-family: Helvetica, Arial, sans-serif;"  onclick="myFunction()">
-	            </form>
+	    <div class="col-sm-3" style="color:#222;font-family: Helvetica, Arial, sans-serif;font-size: 12px">
+
+	   <form method="POST" name="simpann" >
+
+                   token  <br>      <input name="token" id="token" type="text" class="form-control" placeholder=" . . ." style="color:#222;font-family: Helvetica, Arial, sans-serif;" >
+	              
+	               No surat jual  <br>   	<input name="nosj" id="nosj" type="text" class="form-control" placeholder=" . . ." style="color:#222;font-family: Helvetica, Arial, sans-serif;" >
+	           
+	               Tanggal faktur  <br>    	<input name="tgl"  id="tgl" type="text" class="form-control" placeholder=" . . ." style="color:#222;font-family: Helvetica, Arial, sans-serif;" >
+
+                   kode langganan  <br>        <input name="klgn"  id="klgn" type="text" class="form-control"  placeholder=" . . ." style="color:#222;font-family: Helvetica, Arial, sans-serif;" >
+
+                   No SO  <br>     <input name="noso"  id="noso" type="text" class="form-control"  placeholder=" . . ." style="color:#222;font-family: Helvetica, Arial, sans-serif;" >
+
+                   Keterangan  <br>        <input name="ket"  id="ket" type="text" class="form-control"  placeholder=" . . ." style="color:#222;font-family: Helvetica, Arial, sans-serif;" >
+               
+        <br><hr>
+                    <input type="Submit" class="btn btn-default" value="Simpan" style=" color: #fed136;font-family: Helvetica, Arial, sans-serif;float: right; background-color: #222"   onclick="addd()" >
+                    <input type="button" class="btn btn-default" value="Batal" style=" color:#fff;font-family: Helvetica, Arial, sans-serif;float: right; background-color: #222"  >
+                
 	    </div>
 
-	  	<div class="col-sm-9" style="color:#222;font-family: Helvetica, Arial, sans-serif;font-size: 8px">
+	  	<div class="col-sm-9" >
 
-                <form method="DELETE" Name="klik">
-                    <table width="100%" class="table table-striped table-bordered table-hover" id="myTable" style="color:#222;font-family: Helvetica, Arial, sans-serif;font-size: 12px">
+        <form method="POST" name="klik" >
+        <div class="col-sm-3" style="color:#222;font-family: Helvetica, Arial, sans-serif;font-size: 12px">
+             
+        kode barang  <br> <input id="kb" type="text" class="form-control" name="kb" placeholder=" . . ." style="color:#222;font-family: Helvetica, Arial, sans-serif;" >
+                   
+        </div>
+        <div class="col-sm-4" style="color:#222;font-family: Helvetica, Arial, sans-serif;font-size: 12px">
+                    
+         nama barang  <br> <input id="nb" type="text" class="form-control" name="nb" placeholder=". . ." style="color:#222;font-family: Helvetica, Arial, sans-serif;" >
+               
+        </div>
+
+        <div class="col-sm-3" style="color:#222;font-family: Helvetica, Arial, sans-serif;font-size: 12px">
+                    
+        qty  <br> <input id="qty" type="text" class="form-control" name="qty" placeholder=". . ." style="color:#222;font-family: Helvetica, Arial, sans-serif;" >
+               
+        </div>
+
+          <div class="col-sm-3" style="color:#222;font-family: Helvetica, Arial, sans-serif;font-size: 12px">
+                    
+        satuan  <br> <input id="sat" type="text" class="form-control" name="sat" placeholder=". . ." style="color:#222;font-family: Helvetica, Arial, sans-serif;" >
+               
+        </div>
+
+          <div class="col-sm-3" style="color:#222;font-family: Helvetica, Arial, sans-serif;font-size: 12px">
+                    
+        serial  <br> <input id="sr" type="text" class="form-control" name="sr" placeholder=". . ." style="color:#222;font-family: Helvetica, Arial, sans-serif;" >
+               
+        </div>
+        <div class="col-sm-3" style="color:#fff;font-family: Helvetica, Arial, sans-serif;font-size: 12px"> 
+        s<br> 
+        <input type="button" class="btn btn-default" value="Input" style="color:#222;font-family: Helvetica, Arial, sans-serif;"  onclick="myFunction()">  
+        </div>
+        <br><br> <br>  <br><br>  <br>
+            
+                    <table  class="table table-striped table-bordered table-hover" id="myTable" style="color:#222;font-family: Helvetica, Arial, sans-serif;font-size: 12px">
                         <thead>
                             <tr>
-                                <th>Country</th>
-                                <th>Currency</th>
+                                <th>kode barang</th>
+                                <th>nama barang</th>
+                                <th>qty</th>
+                                <th>satuan</th>
+                                <th>serial</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -39,26 +82,146 @@
                             </tr >
                         </tbody>
                     </table>
-                </form>
+
+        <hr>
+
+        <div class="col-sm-3" style="color:#222;font-family: Helvetica, Arial, sans-serif;font-size: 12px">
+             
+        kode barang  <br> <input id="kb2" type="text" class="form-control" name="kb2" placeholder=" . . ." style="color:#222;font-family: Helvetica, Arial, sans-serif;" disabled>
+                   
+        </div>
+        <div class="col-sm-4" style="color:#222;font-family: Helvetica, Arial, sans-serif;font-size: 12px">
+                    
+        serial  <br> <input id="sr2" type="text" class="form-control" name="sr2" placeholder=". . ." style="color:#222;font-family: Helvetica, Arial, sans-serif;" >
+               
+        </div>
+
+        <div class="col-sm-3" style="color:#fff;font-family: Helvetica, Arial, sans-serif;font-size: 12px"> 
+        s<br> 
+        <input type="button" class="btn btn-default" value="Input" style="color:#222;font-family: Helvetica, Arial, sans-serif;"  onclick="myFunction2()">  
+        </div>
+        <br>    <br>    <br>  
+
+                    <table class="table table-striped table-bordered table-hover" id="myTable2" style="color:#222;font-family: Helvetica, Arial, sans-serif;font-size: 12px">
+                        <thead>
+                            <tr>
+                                <th>kode barang</th>
+                                <th>nama barang</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="odd gradeX">
+                            </tr >
+                        </tbody>
+                    </table>
+        <hr>
+         <input class="form-control" type="hidden" id="json2" name="json2"  size="20" style="color:#222;font-family: Helvetica, Arial, sans-serif;font-size: 8px">
+
+        </form>
+
 	    </div>
 
+        <input class="form-control" type="hidden" id="detjual" name="detjual" size="20" style="color:#222;font-family: Helvetica, Arial, sans-serif;font-size: 8px">
+        <br>
+        <input class="form-control" type="hidden" id="detjual2" name="detjual2"  size="20" style="color:#222;font-family: Helvetica, Arial, sans-serif;font-size: 8px">
+        <br>
+       
     </div>
+        <script>
+        function addd() 
+        {
+        var text="";
+        var idrow="";
+        var table = document.getElementById("myTable");
+        var w = document.getElementById("myTable").getElementsByTagName("tr").length;
+        w=w-2
+        for (i = 1; i <= w; i++) {
+        idrow ="rowA"+i   
+        text += document.getElementById(idrow).value;
+        }
+        var newStr = text.substring(0, text.length-1);
+        document.getElementById("detjual").value = '['+ newStr +']';
+
+        var text2="";
+        var idrow2="";
+        var table2 = document.getElementById("myTable2");
+        var w2 = document.getElementById("myTable2").getElementsByTagName("tr").length;
+        w2=w2-2
+        for (i2 = 1; i2 <= w2; i2++) {
+        idrow2 ="rowB"+i2  
+        text2 += document.getElementById(idrow2).value  ;
+        }
+        var newStr2 = text2.substring(0, text2.length-1);
+        document.getElementById("detjual2").value = '['+ newStr2 +']';
+       
+        var token = '"token":'+'"'+document.getElementById("token").value +'"';
+        var nosj = '"NoSJ":'+'"'+document.getElementById("nosj").value +'"';
+        var tgl = '"TGL_FAK":'+'"'+document.getElementById("tgl").value +'"';
+        var klgn = '"K_LGN":'+'"'+document.getElementById("klgn").value +'"';
+        var noso = '"NO_SO":'+'"'+document.getElementById("noso").value +'"';
+        var ket = '"KET":'+'"'+document.getElementById("ket").value +'"';
+        var detjual = '"DETJUAL":'+ document.getElementById("detjual").value;
+        var detjual2 = '"Detjual2":'+document.getElementById("detjual2").value;
+
+        document.getElementById("json2").value ="{"+ nosj+','+tgl+','+klgn+','+ket+','+noso+','+detjual+','+detjual2+"}";
+        }
+        </script>
 
 	  	<script>
 		function myFunction() 
 		{
 	    var table = document.getElementById("myTable");
+        var w = document.getElementById("myTable").getElementsByTagName("tr").length;
+        w=w-1
+        w="rowA"+w
 	    var row = table.insertRow(1);
 	    var cell1 = row.insertCell(0);
 	    var cell2 = row.insertCell(1);
 	    var cell3 = row.insertCell(2);
-	    cell1.innerHTML = document.getElementById("t").value;
-	    cell2.innerHTML = document.getElementById("d").value;
-	    cell3.innerHTML = "<input class=\"btn btn-default\" id=\"Button\" type=\"button\" value=\"Delete\"  onclick=\"deleteRow(this)\" style=\"color:#222;font-family: Helvetica, Arial, sans-serif;font-size: 10px\" />";
-	    document.getElementById("t").value = "";
-	    document.getElementById("d").value = "";
+        var cell4 = row.insertCell(3);
+        var cell5 = row.insertCell(4);
+        var cell6 = row.insertCell(5);
+        var cell7 = row.insertCell(6);
+        cell1.innerHTML = document.getElementById("kb").value ;
+	    cell2.innerHTML = document.getElementById("nb").value ;
+        cell3.innerHTML = document.getElementById("qty").value ;
+        cell4.innerHTML = document.getElementById("sat").value ;
+        cell5.innerHTML = document.getElementById("sr").value ;
+	    cell6.innerHTML = "<input class=\"btn btn-default\" id=\"Button\" type=\"text\" value=\"Delete\"  onclick=\"deleteRow(this)\" style=\"color:#222;font-family: Helvetica, Arial, sans-serif;font-size: 10px\" />";
+	    cell7.innerHTML = "<input id="+w+" type=\"text\" />";
+        document.getElementById(w).value = '{"K_BRG" : '+'"'+ document.getElementById("kb").value +'",'+'"N_BRG" : '+'"'+ document.getElementById("nb").value +'",'+'"QTY" : '+ document.getElementById("qty").value +','+'"SAT" : '+'"'+ document.getElementById("sat").value +'",'+'"SERIAL" : '+ document.getElementById("sr").value +'},';
+
+        document.getElementById("kb2").value = document.getElementById("kb").value;
+        document.getElementById("kb").value = "";
+        document.getElementById("nb").value = "";
+        document.getElementById("qty").value = "";
+        document.getElementById("sat").value = "";
+        document.getElementById("sr").value ="";
 		}
 		</script>
+
+        <script>
+        function myFunction2() 
+        {
+        var table = document.getElementById("myTable2");
+        var v = document.getElementById("myTable2").getElementsByTagName("tr").length;
+        v=v-1
+        v="rowB"+v
+        var row = table.insertRow(1);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        cell1.innerHTML = document.getElementById("kb2").value;
+        cell2.innerHTML = document.getElementById("sr2").value;
+        cell3.innerHTML = "<input class=\"btn btn-default\" id=\"Button2\" type=\"text\" value=\"delete\" onclick=\"deleteRow2(this)\" style=\"color:#222;font-family: Helvetica, Arial, sans-serif;font-size: 10px\" />";
+        cell4.innerHTML = "<input id="+v+" type=\"text\" />";
+        document.getElementById(v).value+= '{"Serial" : '+'"'+ document.getElementById("sr2").value +'",'+'"K_BRG" : '+'"'+ document.getElementById("kb2").value +'"},';
+
+        document.getElementById("sr2").value = "";
+        }
+        </script>
 
         <script>
         var table = document.getElementsByTagName("table")[0];
@@ -66,21 +229,32 @@
         tbody.onclick = function (e) 
         {
             e = e || window.event;
-            var data = [];
-            var data2 = [];
+            var kb = [];
+            var nb = [];
+            var qty = [];
+            var sat = [];
+            var sr = [];
             var target = e.srcElement || e.target;
             while (target && target.nodeName !== "TR") {
                 target = target.parentNode;
                                                      }
             if (target) {
                         var cells = target.getElementsByTagName("td");
-                        data.push(cells[0].innerHTML);  
-                        data2.push(cells[1].innerHTML);
+                        kb.push(cells[0].innerHTML);  
+                        nb.push(cells[1].innerHTML);
+                        qty.push(cells[2].innerHTML);  
+                        sat.push(cells[3].innerHTML);
+                        sr.push(cells[4].innerHTML);  
                         }
-            document.getElementById("t").value = data;
-            document.getElementById("d").value = data2;
+            document.getElementById("kb").value = kb;
+            document.getElementById("nb").value = nb;
+            document.getElementById("qty").value = qty;
+            document.getElementById("sat").value = sat;
+            document.getElementById("sr").value = sr;
         };
     	</script>
+
+     
 
    		<script>
 		function deleteRow(r) {
@@ -89,6 +263,14 @@
 		}
 		</script>
 
+        <script>
+        function deleteRow2(r) {
+        var i = r.parentNode.parentNode.rowIndex;
+        document.getElementById("myTable2").deleteRow(i);
+        }
+        </script>
+
     </section>
 
   {% endblock %}
+

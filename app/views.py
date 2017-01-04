@@ -1,7 +1,16 @@
 from flask import render_template, flash, redirect, url_for, request
 from app import app
-import json,urllib, sys
+import json,urllib, sys,ast
 import requests
+from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import A5, landscape, cm,inch
+from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.platypus import Paragraph, Table, TableStyle,SimpleDocTemplate
+from reportlab.lib.enums import TA_JUSTIFY, TA_LEFT, TA_CENTER, TA_RIGHT
+from reportlab.lib import colors
+import os,json, win32api, locale
+from flask import make_response
+
 
 user = {'name': '</python>'}
 
@@ -12,27 +21,8 @@ def login():
         if request.form['username'] != 'admin' or request.form['password'] != 'admin':
             error='user/pass salahhhhh'
         else:
-            return redirect(url_for('index'))
+            return redirect(url_for('data'))
     return render_template("index.html",error=error,user=user)
-
-@app.route('/home', methods=['GET', 'POST','DELETE'])
-def index():
-    if request.method =='POST': 
-        url = "http://128.199.232.32/dbpost"
-        payload = {'COUNTRY':request.form['t'], 'CURRENCY':request.form['d']}
-        headers = {'content-type': 'application/json'}
-        response = requests.post(url, data=json.dumps(payload), headers=headers) 
-        return redirect(url_for('index'))
-    if request.method =='DELETE': 
-        url = "http://128.199.232.32/db/"+request.form['url']
-        payload = ""
-        headers = {'content-type': 'application/json'}
-        response = requests.request("DELETE", url, data=payload, headers=headers)
-        return redirect(url_for('index'))
-    data = urllib.urlopen("http://128.199.232.32/db").read()
-    resp_dict = json.loads(data)
-    post=(resp_dict)
-    return render_template('home.html',title='project',user=user,post=post)
 
 @app.route('/input')
 def input():
@@ -99,12 +89,162 @@ def input():
     isi=zz['Barang']
     return render_template('input.html',title='project',user=user,isi=isi,z=z)
 
-@app.route('/data')
-def data():
-    return render_template('data.html',title='project',user=user)
-
 @app.route('/utility')
 def utility():
+    import cStringIO
+    output = cStringIO.StringIO()
+    data = '{"No Faktur": "F009801","Nama": "James Bond",' \
+       '"Tanggal": "23 - Nov - 2016",' \
+       '"Address":{"jalan": "jl.babakan jeruk 102","kota": "Bandung","negara": "INDONESIA","kodepost": "10021"},' \
+       '"Barang":' \
+       '[{"Nama Barang": "TOYO","Qty": "19","harga":"1000","total":"19.000","id":"1"},' \
+        '{"Nama Barang": "MOMO","Qty": "3","harga":"3000","total":"9.000","id":"2"},' \
+        '{"Nama Barang": "MOJO","Qty": "77","harga":"1000","total":"77.000","id":"3"},' \
+        '{"Nama Barang": "GOTO","Qty": "12","harga":"2000","total":"24.000","id":"4"},'\
+        '{"Nama Barang": "LOMO","Qty": "8","harga":"5000","total":"40.000","id":"5"},' \
+        '{"Nama Barang": "JOJO","Qty": "1","harga":"55000","total":"55.000","id":"6"},' \
+        '{"Nama Barang": "TOTO","Qty": "14","harga":"500","total":"12.000","id":"7"},' \
+        '{"Nama Barang": "DOJO","Qty": "14","harga":"500","total":"12.000","id":"8"},' \
+        '{"Nama Barang": "MOMO","Qty": "3","harga":"3000","total":"9.000","id":"9"},' \
+        '{"Nama Barang": "MOJO","Qty": "77","harga":"1000","total":"77.000","id":"10"},' \
+        '{"Nama Barang": "GOTO","Qty": "12","harga":"20000000","total":"24.000","id":"11"},' \
+        '{"Nama Barang": "LOMO","Qty": "8","harga":"5000","total":"40.000","id":"12"},' \
+        '{"Nama Barang": "JOJO","Qty": "1","harga":"55000","total":"55.000","id":"13"},' \
+        '{"Nama Barang": "TOTO","Qty": "14","harga":"500","total":"12.000","id":"14"},' \
+        '{"Nama Barang": "DOJO","Qty": "14","harga":"500","total":"12.000","id":"15"},' \
+        '{"Nama Barang": "NOMO","Qty": "5","harga":"6000","total":"30.000","id":"16"}' \
+         ']}';
+    isi = json.loads(data)
+
+    width, height = A5
+    styles = getSampleStyleSheet()
+
+    styleHead = styles["Normal"]
+    styleHead.alignment = TA_CENTER
+
+    styleIsi = styles["BodyText"]
+    styleIsi.alignment = TA_RIGHT
+
+    styleNama = styles["Italic"]
+    styleNama.alignment = TA_LEFT
+
+    def coord(x, y, unit=1):
+        x, y = x * unit, height -  y * unit
+        return x,y
+
+    hno = Paragraph('''<b>NO</b>''', styleHead)
+    hnama = Paragraph('''<b>NAMA</b>''', styleHead)
+    hqty = Paragraph('''<b>QTY</b>''', styleHead)
+    hharga = Paragraph('''<b>HARGA</b>''', styleHead)
+    htotal = Paragraph('''<b>TOTAL</b>''', styleHead)
+    data= [[hno, hnama,hqty, hharga, htotal]]
+
+    tot=0
+    for zzz in isi['Barang']:
+        no = Paragraph((zzz['id']), styleIsi)
+        nama = Paragraph((zzz['Nama Barang']), styleNama)
+        qty = Paragraph((zzz['Qty']), styleIsi)
+        rp = str(zzz['harga'])
+        t  = 0
+        out = ''
+        for i in (rp[::-1]):
+            if t == 3:
+                out += '.'+i
+                t=1
+            else:
+                out += i
+                t += 1
+        hasil = out[::-1]
+        harga = Paragraph(str(hasil), styleIsi)
+        total = int(zzz['harga'])*int(zzz['Qty'])
+        rp2 = str(total)
+        t2  = 0
+        out2 = ''
+        for i2 in (rp2[::-1]):
+            if t2 == 3:
+                out2 += '.'+i2
+                t2=1
+            else:
+                out2 += i2
+                t2 += 1
+        hasil2 = out2[::-1]
+        total=Paragraph(str(hasil2), styleIsi)
+        data.append([no, nama,qty, harga, total])
+        tot = tot + (int(zzz['harga'])*int(zzz['Qty']))
+
+    rp3 = str(tot)
+    t3  = 0
+    out3 = ''
+    for i3 in (rp3[::-1]):
+        if t3 == 3:
+            out3 += '.'+i3
+            t3=1
+        else:
+            out3 += i3
+            t3 += 1
+    hasil3 = out3[::-1]
+    tot=hasil3
+
+    hnoF = Paragraph('''''', styleHead)
+    hnamaF = Paragraph('''''', styleHead)
+    hqtyF = Paragraph('''''', styleHead)
+    hhargaF = Paragraph('''<b>TOTAL</b>''', styleHead)
+    htotalF = Paragraph(str(tot), styleIsi)
+    data.append([hnoF, hnamaF,hqtyF, hhargaF, htotalF])
+
+
+    table = Table(data, colWidths=[1 * cm, 10 * cm, 1.5 * cm,3* cm, 3 * cm])
+    table.setStyle(TableStyle([('INNERGRID', (0,0), (-1,-1), 0.25, colors.black),('BOX', (0,0), (-1,-1), 0.25, colors.black),]))
+    elements = []
+    elements.append(table)
+
+    class FHCanvas(canvas.Canvas):
+        def __init__(self, *args, **kwargs):
+            canvas.Canvas.__init__(self, *args, **kwargs)
+            self.pages = []
+
+        def showPage(self):
+            self.pages.append(dict(self.__dict__))
+            self._startPage()
+
+        def save(self):
+            page_count = len(self.pages)
+            for page in self.pages:
+                self.__dict__.update(page)
+                self.draw_canvas(page_count)
+                canvas.Canvas.showPage(self)
+            canvas.Canvas.save(self)
+
+        def draw_canvas(self, page_count):
+            self.drawString(250, 400,"FAKTUR JUAL")
+            self.drawString(35, 390,"Kepada Yth :")
+            self.drawString(35, 375,(isi['Nama']))
+            self.drawString(35, 360,(isi['Address']['jalan']))
+            self.drawString(35, 345,"0813 2200 9989")
+            self.drawString(405, 375,"No Faktur :")
+            self.drawString(475, 375,(isi['No Faktur']))
+            self.drawString(405, 360,"Tanggal    :")
+            self.drawString(475, 360,(isi['Tanggal']))
+            page = "Page %s of %s" % (self._pageNumber, page_count)
+            x = 150
+            self.drawString(57, 70,"Hormat kami")
+            self.drawString(50, 30,"(.....................)")
+            self.drawString(457, 70,"Customer")
+            self.drawString(450, 30,"(.....................)")
+            self.saveState()
+            self.setStrokeColorRGB(0, 0, 0)
+            self.drawString(A5[0]-x, 10, page)
+            self.restoreState()
+
+    doc = SimpleDocTemplate("fakturr.pdf", pagesize=landscape(A5))
+    doc.multiBuild(elements, canvasmaker=FHCanvas)
+    pdf_out = output.getvalue()
+    output.close()
+
+    response = make_response(pdf_out)
+    response.headers['Content-Disposition'] = "attachment; filename='fakturr.pdf"
+    response.mimetype = 'application/pdf'
+    return response
     return render_template('utility.html',title='project',user=user)
 
 @app.route('/acounting')
@@ -127,5 +267,29 @@ def acounting():
     n = len (faktur)
     return render_template('acounting.html',title='project',user=user,faktur=faktur,n=n)
 
+@app.route('/home', methods=['GET', 'POST'])
+def index():
+    if request.method =='POST': 
+        url = "http://128.199.232.32/dbpost"
+        payload = {'COUNTRY':request.form['t'], 'CURRENCY':request.form['d']}
+        headers = {'content-type': 'application/json'}
+        response = requests.post(url, data=json.dumps(payload), headers=headers) 
+        return redirect(url_for('index'))
+    data = urllib.urlopen("http://128.199.232.32/db").read()
+    resp_dict = json.loads(data)
+    post=(resp_dict)
+    return render_template('home.html',title='project',user=user,post=post)
 
-
+@app.route('/data', methods=['GET', 'POST'])
+def data():
+    error = None
+    if request.method =='POST': 
+        headers = {'Content-Type':'application/json', 'Authorization': 'Avasoft  eyJhbGciOiJIUzI1NiIsImV4cCI6MTQ4MzQ5NTM4NiwiaWF0IjoxNDgzNDkxNzg2fQ.eyJ1c2VybmFtZSI6IkEyIiwiaXBuYSI6IjE4Mi4yNTMuMTYzLjcwIiwicGFzcyI6IkEyIn0.efDVSkn_IErrAdZUwlov1VkUpLAgcJOWwwINIzdGKD8'}
+        url1 = "http://128.199.232.32/inputjual"
+        str4 = str(request.form['json2'])
+        payload2 = ast.literal_eval(str4)
+        payload = dict(list(payload2.items()))
+        response = requests.post(url1, data=json.dumps(payload), headers=headers)
+        print response.text
+        return redirect(url_for('data'))
+    return render_template('data.html',title='project',user=user,error=error)
