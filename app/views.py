@@ -307,6 +307,7 @@ def pdf():
     response.headers['Content-Type'] = 'application/pdf'
     response.headers['Content-Disposition'] = 'inline; filename=%s.pdf' % 'faktur.pdf'
     return response
+ 
 
 
 
